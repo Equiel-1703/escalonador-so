@@ -91,7 +91,7 @@
     <panel_attributes>Scheduler
 -
 - core_num_: int
-- cores_[ ]: Core
+- cores_: Core*
 _- time_counter__
 -
 + Scheduler(core_num: int)
