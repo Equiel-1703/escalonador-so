@@ -40,6 +40,7 @@ std::list<Task> &FileManager::readFile(std::string file_path)
             name_task = result.str(0).substr(0, space_index);
             task_duration = std::stoi(result.str(0).substr(space_index + 1));
 
+            // Cria a tarefa e a coloca no fim da lista (ele copia o objeto, podemos alocar na pilha mesmo)
             task_list->push_back(Task(name_task, task_duration));
         }
     }
