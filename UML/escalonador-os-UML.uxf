@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>189</y>
+      <x>468</x>
+      <y>180</y>
       <w>72</w>
       <h>27</h>
     </coordinates>
@@ -15,24 +15,24 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>81</x>
-      <y>297</y>
-      <w>297</w>
+      <x>0</x>
+      <y>288</y>
+      <w>306</w>
       <h>135</h>
     </coordinates>
     <panel_attributes>FileManager
 -
 - file_: fstream
 -
-+ readFile(file_path: String): list&lt;Task&gt;
-+ writeFile(file_path: String, text: list&lt;String&gt;): void</panel_attributes>
++ readFile(file_path: String): list&lt;Task&gt;&amp;
++ writeFile(file_path: String, text: list&lt;String&gt;&amp;): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
-      <y>297</y>
+      <x>378</x>
+      <y>288</y>
       <w>252</w>
       <h>135</h>
     </coordinates>
@@ -43,14 +43,15 @@
 -
 + Task(name: String, duration: int)
 + getName(): String
-+ getDuration(): int</panel_attributes>
++ getDuration(): int
++ print(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>216</x>
-      <y>207</y>
+      <x>144</x>
+      <y>198</y>
       <w>378</w>
       <h>108</h>
     </coordinates>
@@ -60,8 +61,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>207</y>
+      <x>495</x>
+      <y>198</y>
       <w>27</w>
       <h>108</h>
     </coordinates>
@@ -71,8 +72,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>369</x>
-      <y>360</y>
+      <x>297</x>
+      <y>351</y>
       <w>99</w>
       <h>27</h>
     </coordinates>
@@ -82,8 +83,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>792</x>
-      <y>297</y>
+      <x>720</x>
+      <y>288</y>
       <w>468</w>
       <h>135</h>
     </coordinates>
@@ -100,8 +101,8 @@ _+ time_counter__
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>207</y>
+      <x>495</x>
+      <y>198</y>
       <w>477</w>
       <h>108</h>
     </coordinates>
@@ -111,8 +112,8 @@ _+ time_counter__
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>693</x>
-      <y>360</y>
+      <x>621</x>
+      <y>351</y>
       <w>117</w>
       <h>27</h>
     </coordinates>
@@ -122,8 +123,8 @@ _+ time_counter__
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1251</x>
-      <y>360</y>
+      <x>1179</x>
+      <y>351</y>
       <w>99</w>
       <h>27</h>
     </coordinates>
@@ -133,8 +134,8 @@ _+ time_counter__
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>963</x>
-      <y>513</y>
+      <x>891</x>
+      <y>504</y>
       <w>126</w>
       <h>81</h>
     </coordinates>
@@ -148,8 +149,8 @@ kGJF</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1017</x>
-      <y>423</y>
+      <x>945</x>
+      <y>414</y>
       <w>27</w>
       <h>108</h>
     </coordinates>
@@ -159,8 +160,8 @@ kGJF</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1332</x>
-      <y>297</y>
+      <x>1260</x>
+      <y>288</y>
       <w>252</w>
       <h>144</h>
     </coordinates>

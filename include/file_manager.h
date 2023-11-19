@@ -13,7 +13,7 @@ namespace escalonador
 
     public:
         std::list<Task> &readFile(std::string file_path);
-        void writeFile(std::string file_path, std::list<std::string> text);
+        void writeFile(std::string file_path, std::list<std::string> &text); // Falta implementar
     };
 
 } // namespace escalonador
