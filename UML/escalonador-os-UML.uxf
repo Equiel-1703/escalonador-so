@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>9</zoom_level>
+  <zoom_level>12</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>468</x>
-      <y>126</y>
-      <w>72</w>
-      <h>27</h>
+      <x>624</x>
+      <y>0</y>
+      <w>96</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>main()</panel_attributes>
     <additional_attributes/>
@@ -16,9 +16,9 @@
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>234</y>
-      <w>306</w>
-      <h>135</h>
+      <y>144</y>
+      <w>408</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>FileManager
 -
@@ -31,29 +31,32 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>378</x>
-      <y>234</y>
-      <w>252</w>
-      <h>135</h>
+      <x>504</x>
+      <y>144</y>
+      <w>336</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>Task
 -
 - name_: String
 - duration_: int
+- time_in_cpu_: int
 -
 + Task(name: String, duration: int)
 + getName(): String
 + getDuration(): int
++ doWork(): void
++ isDone(): bool
 + print(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>144</x>
-      <y>144</y>
-      <w>378</w>
-      <h>108</h>
+      <x>192</x>
+      <y>24</y>
+      <w>504</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;40.0;400.0;40.0;400.0;10.0</additional_attributes>
@@ -61,10 +64,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>495</x>
-      <y>144</y>
-      <w>27</w>
-      <h>108</h>
+      <x>660</x>
+      <y>24</y>
+      <w>36</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
@@ -72,10 +75,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>297</x>
-      <y>297</y>
-      <w>99</w>
-      <h>27</h>
+      <x>396</x>
+      <y>228</y>
+      <w>132</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
@@ -83,10 +86,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>720</x>
-      <y>234</y>
-      <w>468</w>
-      <h>135</h>
+      <x>960</x>
+      <y>144</y>
+      <w>792</w>
+      <h>264</h>
     </coordinates>
     <panel_attributes>Scheduler
 -
@@ -96,28 +99,32 @@ _- time_counter__
 -
 + Scheduler(core_num: int)
 + ~Scheduler()
+
+- isListOrdered(list: list&lt;T&gt; &amp;): bool
+- getNextTask(policy: SchedulerPolicy, task_list: list&lt;Task&gt; &amp;): Task*
+
 _+ getCounter(): int_
-+ simulateProcessing(task_list: list&lt;Task&gt;*, policy: SchedulerPolicy): list&lt;String&gt;*</panel_attributes>
++ simulateProcessing(task_list: list&lt;Task&gt;&amp;, policy: SchedulerPolicy): unordered_map&lt;int, list&lt;string\&gt;&gt;*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>495</x>
-      <y>144</y>
-      <w>477</w>
-      <h>108</h>
+      <x>660</x>
+      <y>24</y>
+      <w>720</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>510.0;100.0;510.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+    <additional_attributes>580.0;100.0;580.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>621</x>
-      <y>297</y>
-      <w>117</w>
-      <h>27</h>
+      <x>828</x>
+      <y>228</y>
+      <w>156</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
@@ -125,21 +132,21 @@ _+ getCounter(): int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1179</x>
-      <y>297</y>
-      <w>99</w>
-      <h>27</h>
+      <x>1224</x>
+      <y>396</y>
+      <w>36</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>891</x>
-      <y>450</y>
-      <w>126</w>
-      <h>81</h>
+      <x>1488</x>
+      <y>480</y>
+      <w>168</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
 SchedulerPolicy
@@ -151,21 +158,21 @@ kGJF</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>945</x>
-      <y>360</y>
-      <w>27</w>
+      <x>1560</x>
+      <y>396</y>
+      <w>36</w>
       <h>108</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1260</x>
-      <y>234</y>
-      <w>252</w>
-      <h>144</h>
+      <x>1068</x>
+      <y>480</y>
+      <w>336</w>
+      <h>240</h>
     </coordinates>
     <panel_attributes>Core
 -
@@ -174,9 +181,23 @@ kGJF</panel_attributes>
 - task_in_: int
 -
 + Core(int core_id)
++ getId(): int
 + setTask(task: Task*): void
-+ isTaskDone(): bool
++ isOccupied(): bool
++ process(): void
++ getTask(): Task*
 + getCurrentTaskInfo(): String</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>636</x>
+      <y>348</y>
+      <w>456</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;220.0;360.0;220.0</additional_attributes>
   </element>
 </diagram>

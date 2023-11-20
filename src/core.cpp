@@ -1,6 +1,8 @@
 #include "core.h"
-#include "scheduler.h"
+
 #include <iostream>
+
+#include "scheduler.h"
 
 namespace escalonador
 {
@@ -11,18 +13,34 @@ namespace escalonador
         core_id_ = core_id;
     }
 
+    int Core::getId()
+    {
+        return core_id_;
+    }
+
     void Core::setTask(Task *task)
     {
+        if (current_task_ != nullptr)
+            delete current_task_;
+
         current_task_ = task;
         task_in_ = Scheduler::getCounter();
     }
 
-    bool Core::isTaskDone()
+    bool Core::isOccupied()
     {
-        if (current_task_ == nullptr || (Scheduler::getCounter() - task_in_) >= current_task_->getDuration())
-            return true;
+        return current_task_ != nullptr;
+    }
 
-        return false;
+    Task * Core::getTask()
+    {
+        return current_task_;
+    }
+
+    void Core::process()
+    {
+        if(current_task_ != nullptr)
+            current_task_->doWork();
     }
 
     std::string Core::getCurrentTaskInfo()

@@ -1,4 +1,5 @@
-#include "../include/task.h"
+#include "task.h"
+
 #include <string>
 #include <iostream>
 
@@ -8,11 +9,12 @@ namespace escalonador
     {
         name_.assign(name);
         duration_ = duration;
+        time_in_cpu_ = 0;
     }
 
-    bool Task::operator<(Task const& t)
+    bool Task::operator<=(const Task &t) const
     {
-        return this->duration_ < t.duration_;
+        return this->duration_ <= t.duration_;
     }
 
     std::string Task::getName()
@@ -25,10 +27,19 @@ namespace escalonador
         return duration_;
     }
 
-    void Task::print() {
-        std::cout << "Task name: " << name_ << " | Duration: " << duration_ << std::endl;
+    void Task::doWork()
+    {
+        ++time_in_cpu_;
     }
 
+    bool Task::isDone()
+    {
+        return time_in_cpu_ >= duration_;
+    }
 
+    void Task::print()
+    {
+        std::cout << "Task name: " << name_ << " | Duration: " << duration_ << std::endl;
+    }
 
 } // namespace escalonador

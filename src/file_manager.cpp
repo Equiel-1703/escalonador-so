@@ -1,8 +1,8 @@
-#include "../include/file_manager.h"
+#include "file_manager.h"
+
 #include <list>
 #include <regex>
 #include <stdexcept>
-
 #include <iostream>
 
 namespace escalonador
@@ -48,6 +48,7 @@ namespace escalonador
                 while (it != task_list->end() && task_duration > it->getDuration())
                     ++it;
 
+                // A lista cria uma cópia de Task quando insere, por isso não precisamos alocar memória
                 task_list->insert(it, Task(name_task, task_duration));
             }
         }

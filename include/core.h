@@ -1,7 +1,8 @@
 #pragma once
 
-#include "task.h"
 #include <string>
+
+#include "task.h"
 
 namespace escalonador
 {
@@ -15,8 +16,11 @@ namespace escalonador
     public:
         Core(int core_id);
 
+        int getId();
         void setTask(Task *task);
-        bool isTaskDone();
+        bool isOccupied();
+        Task *getTask();
+        void process();
         std::string getCurrentTaskInfo();
     };
 } // namespace escalonador
