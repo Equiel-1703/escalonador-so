@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 
 namespace escalonador
@@ -11,6 +13,7 @@ namespace escalonador
 
     public:
         Task(std::string name, int duration);
+        bool operator<(Task const& t);
 
         std::string getName();
         int getDuration();

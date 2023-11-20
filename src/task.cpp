@@ -10,6 +10,11 @@ namespace escalonador
         duration_ = duration;
     }
 
+    bool Task::operator<(Task const& t)
+    {
+        return this->duration_ < t.duration_;
+    }
+
     std::string Task::getName()
     {
         return name_;
@@ -23,5 +28,7 @@ namespace escalonador
     void Task::print() {
         std::cout << "Task name: " << name_ << " | Duration: " << duration_ << std::endl;
     }
+
+
 
 } // namespace escalonador

@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>468</x>
-      <y>63</y>
+      <y>126</y>
       <w>72</w>
       <h>27</h>
     </coordinates>
@@ -16,7 +16,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>171</y>
+      <y>234</y>
       <w>306</w>
       <h>135</h>
     </coordinates>
@@ -24,7 +24,7 @@
 -
 - file_: fstream
 -
-+ readFile(file_path: String): list&lt;Task&gt;&amp;
++ readFile(file_path: String): list&lt;Task&gt;*
 + writeFile(file_path: String, text: list&lt;String&gt;&amp;): void</panel_attributes>
     <additional_attributes/>
   </element>
@@ -32,7 +32,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>378</x>
-      <y>171</y>
+      <y>234</y>
       <w>252</w>
       <h>135</h>
     </coordinates>
@@ -51,7 +51,7 @@
     <id>Relation</id>
     <coordinates>
       <x>144</x>
-      <y>81</y>
+      <y>144</y>
       <w>378</w>
       <h>108</h>
     </coordinates>
@@ -62,7 +62,7 @@
     <id>Relation</id>
     <coordinates>
       <x>495</x>
-      <y>81</y>
+      <y>144</y>
       <w>27</w>
       <h>108</h>
     </coordinates>
@@ -73,7 +73,7 @@
     <id>Relation</id>
     <coordinates>
       <x>297</x>
-      <y>234</y>
+      <y>297</y>
       <w>99</w>
       <h>27</h>
     </coordinates>
@@ -84,7 +84,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>720</x>
-      <y>171</y>
+      <y>234</y>
       <w>468</w>
       <h>135</h>
     </coordinates>
@@ -97,14 +97,14 @@ _- time_counter__
 + Scheduler(core_num: int)
 + ~Scheduler()
 _+ getCounter(): int_
-+ simulateProcessing(task_list: list&lt;Task&gt;, policy: SchedulerPolicy): list&lt;String&gt;</panel_attributes>
++ simulateProcessing(task_list: list&lt;Task&gt;*, policy: SchedulerPolicy): list&lt;String&gt;*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>495</x>
-      <y>81</y>
+      <y>144</y>
       <w>477</w>
       <h>108</h>
     </coordinates>
@@ -115,7 +115,7 @@ _+ getCounter(): int_
     <id>Relation</id>
     <coordinates>
       <x>621</x>
-      <y>234</y>
+      <y>297</y>
       <w>117</w>
       <h>27</h>
     </coordinates>
@@ -126,7 +126,7 @@ _+ getCounter(): int_
     <id>Relation</id>
     <coordinates>
       <x>1179</x>
-      <y>234</y>
+      <y>297</y>
       <w>99</w>
       <h>27</h>
     </coordinates>
@@ -137,7 +137,7 @@ _+ getCounter(): int_
     <id>UMLClass</id>
     <coordinates>
       <x>891</x>
-      <y>387</y>
+      <y>450</y>
       <w>126</w>
       <h>81</h>
     </coordinates>
@@ -152,7 +152,7 @@ kGJF</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>945</x>
-      <y>297</y>
+      <y>360</y>
       <w>27</w>
       <h>108</h>
     </coordinates>
@@ -163,7 +163,7 @@ kGJF</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1260</x>
-      <y>171</y>
+      <y>234</y>
       <w>252</w>
       <h>144</h>
     </coordinates>

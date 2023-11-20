@@ -5,56 +5,61 @@
 
 #include <iostream>
 
-namespace escalonador {
-
-std::list<Task> &FileManager::readFile(std::string file_path)
+namespace escalonador
 {
-    // Cria ponteiro pra lista
-    std::list<escalonador::Task> *task_list;
 
-    file_in.open(file_path);
-
-    if(file_in.is_open())
+    std::list<Task> *FileManager::readFile(std::string file_path)
     {
-        std::string line;
-        std::regex regex("[a-zA-Z0-9]+ \\d+");
-        std::smatch result;
+        // Cria ponteiro pra lista
+        std::list<escalonador::Task> *task_list;
 
-        std::string name_task;
-        int task_duration;
+        file_in.open(file_path);
 
-        // Aloca lista de fato
-        task_list = new std::list<escalonador::Task>;
-
-        // Percorre arquivo linha a linha  
-        while (std::getline(file_in, line))
+        if (file_in.is_open())
         {
-            // Procurando por padrão na linha atual
-            std::regex_search(line, result, regex);
+            std::string line;
+            std::regex regex("[a-zA-Z0-9]+ \\d+");
+            std::smatch result;
 
-            if(result.empty())
-                continue;
+            std::string name_task;
+            int task_duration;
 
-            // Calcula índice do espaço e pega a duração e o nome da tarefa  
-            int space_index = (int) result.str(0).find_first_of(' ');
-            name_task = result.str(0).substr(0, space_index);
-            task_duration = std::stoi(result.str(0).substr(space_index + 1));
+            // Aloca lista de fato
+            task_list = new std::list<escalonador::Task>;
 
-            // Cria a tarefa e a coloca no fim da lista (ele copia o objeto, podemos alocar na pilha mesmo)
-            task_list->push_back(Task(name_task, task_duration));
+            // Percorre arquivo linha a linha
+            while (std::getline(file_in, line))
+            {
+                // Procurando por padrão na linha atual
+                std::regex_search(line, result, regex);
+
+                if (result.empty())
+                    continue;
+
+                // Calcula índice do espaço e pega a duração e o nome da tarefa
+                int space_index = (int)result.str(0).find_first_of(' ');
+                name_task = result.str(0).substr(0, space_index);
+                task_duration = std::stoi(result.str(0).substr(space_index + 1));
+
+                // Pega o iterador apontando pro primeiro elemento
+                auto it = task_list->begin();
+
+                // Faz it apontar pro priemeiro elemento maior que a tarefa que vamos inserir
+                while (it != task_list->end() && task_duration > it->getDuration())
+                    ++it;
+
+                task_list->insert(it, Task(name_task, task_duration));
+            }
         }
+        else
+        {
+            std::cerr << "Erro ao abrir arquivo \"" << file_path << "\"" << std::endl;
+            throw std::runtime_error("File not found exception");
+        }
+
+        file_in.close();
+
+        return task_list;
     }
-    else
-    {
-        std::cerr << "Erro ao abrir arquivo \"" << file_path << "\"" << std::endl;
-        throw std::runtime_error("File not found exception");
-    }
-
-    file_in.close();
-
-    return *task_list;
-}
-
-
 
 } // namespace escalonador
