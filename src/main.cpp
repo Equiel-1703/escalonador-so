@@ -1,4 +1,8 @@
 #include <iostream>
+#include <list>
+#include <unordered_map>
+#include <stdexcept>
+#include <string>
 
 #include "file_manager.h"
 #include "scheduler.h"
@@ -25,6 +29,7 @@ int main(int argc, char const *argv[])
     catch (const std::invalid_argument &e)
     {
         std::cerr << "Argumento invalido: " << e.what() << std::endl;
+        exit(EXIT_FAILURE);
     }
 
     // Lê lista de tarefas
@@ -37,10 +42,12 @@ int main(int argc, char const *argv[])
     {
         i.print();
     }
+    std::cout << std::endl;
 
+    std::unordered_map<int, std::list<std::string>> *result;
     try
     {
-        auto result = s->simulateProcessing(*task_list, escalonador::Scheduler::kSJF);
+        result = s->simulateProcessing(*task_list, escalonador::Scheduler::kSJF);
 
         // Como temos que percorrer cada lista de cada chave, esse laço é O(k * n)
         for (auto it : *result)
@@ -58,7 +65,10 @@ int main(int argc, char const *argv[])
         std::cerr << e.what() << '\n';
     }
 
+    fm.writeFile("saida.txt", *result);
+
     delete s;
+    delete result;
     delete task_list;
 
     return 0;

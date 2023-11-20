@@ -58,14 +58,14 @@ namespace escalonador
         if (!is_list_ordered)
             throw std::runtime_error("Erro: A lista de tarefas esta vazia ou nao esta ordenada para a simulacao!");
 
-        std::cout << "A lista de tarefas foi ordenada." << std::endl;
+        std::cout << "A lista de tarefas esta ordenada\n\n";
 
         int terminated_tasks = 0;
         int const no_of_tasks = (int)task_list.size();
         auto result_processing = new std::unordered_map<int, std::list<std::string>>();
 
         std::cout << "Nro de tasks: " << no_of_tasks << std::endl;
-        std::cout << "Nro de cores: " << num_of_cores_ << std::endl;
+        std::cout << "Nro de cores: " << num_of_cores_ << "\n\n";
 
         // Inicializa os núcleos e as listas de resultado
         for (int i = 0; i < num_of_cores_; ++i)

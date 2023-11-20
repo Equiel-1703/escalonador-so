@@ -4,6 +4,7 @@
 #include <regex>
 #include <stdexcept>
 #include <iostream>
+#include <unordered_map>
 
 namespace escalonador
 {
@@ -61,6 +62,23 @@ namespace escalonador
         file_in.close();
 
         return task_list;
+    }
+
+    void FileManager::writeFile(std::string file_path, std::unordered_map<int, std::list<std::string>> &text)
+    {
+        file_out.open(file_path);
+
+        for (auto it : text)
+        {
+            file_out << "Tarefas realizadas pelo núcleo [" << it.first << "]\n";
+            for (auto it_list : it.second)
+            {
+                file_out << it_list << '\n';
+            }
+            file_out << '\n';
+        }
+
+        file_out.close();
     }
 
 } // namespace escalonador
