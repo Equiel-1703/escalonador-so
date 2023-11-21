@@ -12,3 +12,20 @@ Onde:
   - g -> Greatest Job First, tarefas **maiores** são executadas primeiro  
 
   Se o parâmetro `<política>` não for fornecido, o simulador executa usando SJF.
+
+## Arquivo com tarefas
+
+O arquivo de texto contendo as tarefas para a simulação deve ser estruturado da seguinte forma:
+```
+<id_tarefa_1> <tempo_1>
+<id_tarefa_2> <tempo_2>
+<id_tarefa_3> <tempo_3>
+...
+```
+Como eu ainda estava a aprendendo a utilizar Regex em C++ quando escrevi esse código, o algoritmo que seleciona os dados da linha possui algumas limitações:
+  - O id de cada tarefa só pode possuir uma combinação de letras maiúsculas/minúsculas e números. Caracteres como underline (_) e travessão (-) não são aceitos
+  - O tempo de duração da tarefa deve ser um número inteiro (essa nem é uma limitação do algoritmo de Regex, mas o programa em si foi projetado para usar um contador inteiro)
+  - Se houver mais de um caractere de espaço entre o id e o tempo, a linha toda é ignorada
+
+Em uma atualização futura do programa eu pretendo melhorar isso.
+
