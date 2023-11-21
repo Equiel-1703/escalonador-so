@@ -1,11 +1,15 @@
 # Simulador de Escalonador
 
-Este programa é um simulador de um escalonador - um dos principais componentes de um sistema operacional. Ele possui dois algoritmos implementados: SJF (Shortest Job First) e GJF (Greatest Job First). Para usá-lo, é preciso fornecer como entrada o arquivo contendo as tarefas para ele escalonar, o número de cores do processador da simulação e a política de escalonamento:
+Este programa é um simulador de um escalonador - um dos principais componentes de um sistema operacional. Ele possui dois algoritmos implementados: SJF (Shortest Job First) e GJF (Greatest Job First). Para usá-lo, é preciso fornecer como entrada o arquivo contendo as tarefas para ele escalonar, o número de cores do processador da simulação e a política de escalonamento.
+
+A saída do programa mostra as tarefas lidas do arquivo de entrada ordenadas em ordem crescente de tempo, o que cada núcleo processou em cada instante de tempo e o tempo total que levou para os núcleos executarem todas as tarefas. Um arquivo de texto "saida.txt" é gerado contendo essas mesmas informações mostradas no terminal.
+
+A forma de uso do simulador na linha de comando é:
 
 ```simulador-so <arquivo_com_tarefas.txt> <nro_de_cores> <politica>```
 
 Onde: 
-- \<arquivo_com_tarefas.txt> é o caminho do arquivo contendo as tarefas para o escalonador. A forma que esse arquivo deve ser estruturado é explicado mais abaixo
+- \<arquivo_com_tarefas.txt> é o caminho do arquivo de texto contendo as tarefas para o escalonador. A forma que esse arquivo deve ser estruturado é explicado mais abaixo
 - \<nro_de_cores> é o número de cores do processador da simulação
 - \<politica> [OPCIONAL] é a política de escalonamento usada para selecionar as tarefas. Como dito anteriormente, há duas políticas implementadas:
   - s -> Shortest Job First, nessa política as tarefas **menores** são executadas primeiro
@@ -33,7 +37,7 @@ Em uma atualização futura do programa eu pretendo melhorar isso.
 
 Nesse projeto tive a oportunidade de aprender e praticar técnicas muito legais de C++, como ponteiros inteligentes, templates de classes, tratamento de exceções na linguagem e *move semantics* - um conceito que eu nem fazia ideia que existia e é muito útil.
 
-Quando eu fiz o diagrama de classes desse projeto eu não só tive em mente as boas práticas de programação orientada a objetos (*single responsibility*, *open-closed principle* etc) mas também levei em consideração de como deveria ser a estrutura de um escalonador dentro de um sistema operacional. Por isso existem as classes Core, Task e Scheduler:
+Quando eu fiz o diagrama de classes desse projeto eu não só tive em mente as boas práticas de programação orientada a objetos (*single responsibility*, *open-closed principle* etc) mas também levei em consideração de como deveria ser a estrutura de um escalonador real dentro de um sistema operacional. Por isso existem as classes Core, Task e Scheduler:
 
 ![escalonador-os-UML](https://github.com/Equiel-1703/escalonador-so/assets/96885946/5161a53a-9978-4dad-bd2e-3df42c014ab8)
 
@@ -48,5 +52,4 @@ class SimulationResults
   ...
 }
 ```
-Mas uma regra que eu simplesmente não consegui seguir foi a de nomear métodos de uma classe usando *PascalCase*. Isso pra mim é muito contraintuitivo, principalmente por eu ter acostumado com Java. Em Java, tradicionalmente se nomeia classes em *PascalCase* e métodos em *camelCase*, assim no código temos uma diferença visível entre métodos e classes. Como eu não gostei dessa norma eu não segui ela no desenvolvimento desse código - como todo bom programador teimoso.
-
+Mas uma regra que eu simplesmente não consegui seguir foi a de nomear métodos de uma classe usando *PascalCase*. Isso pra mim é muito contraintuitivo, principalmente por eu ter acostumado com a convenção usada em Java. Na linguagem do café javanês, tradicionalmente se nomeia classes usando *PascalCase* e métodos usando *camelCase*. Dessa forma, temos uma diferença visível no código entre métodos e classes. Como eu não gostei dessa norma eu fiz o que todo bom programador teimoso faz: fiz do meu jeito e funcionou bem.
