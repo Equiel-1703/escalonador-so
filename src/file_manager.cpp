@@ -14,9 +14,9 @@ namespace escalonador
         // Cria ponteiro pra lista
         std::shared_ptr<std::list<escalonador::Task>> task_list(new std::list<escalonador::Task>());
 
-        file_in.open(file_path);
+        file_in_.open(file_path);
 
-        if (file_in.is_open())
+        if (file_in_.is_open())
         {
             std::string line;
             std::regex regex("[a-zA-Z0-9]+ \\d+");
@@ -26,7 +26,7 @@ namespace escalonador
             int task_duration;
 
             // Percorre arquivo linha a linha
-            while (std::getline(file_in, line))
+            while (std::getline(file_in_, line))
             {
                 // Procurando por padrão na linha atual
                 std::regex_search(line, result, regex);
@@ -56,21 +56,21 @@ namespace escalonador
             throw std::runtime_error("File not found exception");
         }
 
-        file_in.close();
+        file_in_.close();
 
         return task_list;
     }
 
     void FileManager::writeFile(std::string file_path, std::list<std::string> &text)
     {
-        file_out.open(file_path);
+        file_out_.open(file_path);
 
         for (auto it : text)
         {
-            file_out << it;
+            file_out_ << it;
         }
 
-        file_out.close();
+        file_out_.close();
     }
 
 } // namespace escalonador

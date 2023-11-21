@@ -14,8 +14,8 @@ namespace escalonador
     class FileManager
     {
     private:
-        std::ifstream file_in;
-        std::ofstream file_out;
+        std::ifstream file_in_;
+        std::ofstream file_out_;
 
     public:
         // This method returns a ordered list of tasks

@@ -111,6 +111,8 @@ namespace escalonador
         result_processing->setTotalTime(time_counter_);
         resetCounter();
 
+        // o compilador usa move aqui, ele não cria uma cópia do ponteiro único
+        // referencia: https://stackoverflow.com/questions/4316727/why-can-you-return-a-stdunique-ptr-without-stdmove
         return std::unique_ptr<SimulationResults>(result_processing);
     }
 } // namespace escalonador
