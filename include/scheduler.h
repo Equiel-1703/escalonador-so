@@ -5,6 +5,7 @@
 
 #include "core.h"
 #include "task.h"
+#include "simulation_results.h"
 
 namespace escalonador
 {
@@ -21,10 +22,12 @@ namespace escalonador
         const int num_of_cores_;
         Core *cores_;
         static int time_counter_;
+        std::list<Task> *task_list_;
+        SchedulerPolicy policy_;
 
         // Check if a given list is ordered
         template <typename T>
-        bool isListOrdered(const std::list<T>& list) const
+        bool isListOrdered(const std::list<T> &list) const
         {
             if (list.empty())
                 return false;
@@ -52,15 +55,16 @@ namespace escalonador
             return true;
         }
 
-        Task *getNextTask(SchedulerPolicy policy, std::list<Task> &task_list);
+        Task *getNextTask();
 
     public:
-        Scheduler(int num_of_cores);
+        Scheduler(int num_of_cores, std::list<Task> *&&task_list, SchedulerPolicy policy);
         ~Scheduler();
 
         static int getCounter();
+        static void resetCounter();
 
         // Note: this method only works properly if task_list is ordered!
-        std::unordered_map<int, std::list<std::string>> *simulateProcessing(std::list<Task> &task_list, SchedulerPolicy policy);
+        SimulationResults *simulateProcessing();
     };
 } // namespace escalonador

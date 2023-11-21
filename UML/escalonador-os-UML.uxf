@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>12</zoom_level>
+  <zoom_level>4</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
-      <y>0</y>
-      <w>96</w>
-      <h>36</h>
+      <x>348</x>
+      <y>144</y>
+      <w>32</w>
+      <h>12</h>
     </coordinates>
     <panel_attributes>main()</panel_attributes>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>144</y>
-      <w>408</w>
-      <h>180</h>
+      <x>140</x>
+      <y>192</y>
+      <w>136</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>FileManager
 -
@@ -31,10 +31,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>144</y>
-      <w>336</w>
-      <h>216</h>
+      <x>308</x>
+      <y>192</y>
+      <w>112</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>Task
 -
@@ -53,10 +53,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>192</x>
-      <y>24</y>
-      <w>504</w>
-      <h>144</h>
+      <x>204</x>
+      <y>152</y>
+      <w>168</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;40.0;400.0;40.0;400.0;10.0</additional_attributes>
@@ -64,10 +64,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>660</x>
-      <y>24</y>
-      <w>36</w>
-      <h>144</h>
+      <x>360</x>
+      <y>152</y>
+      <w>12</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
@@ -75,10 +75,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>396</x>
-      <y>228</y>
-      <w>132</w>
-      <h>36</h>
+      <x>272</x>
+      <y>220</y>
+      <w>44</w>
+      <h>12</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
@@ -86,45 +86,48 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>960</x>
-      <y>144</y>
-      <w>792</w>
-      <h>264</h>
+      <x>460</x>
+      <y>192</y>
+      <w>216</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>Scheduler
 -
 - core_num_: int
 - cores_: Core*
 _- time_counter__
+- task_list_: list&lt;Task&gt;*
+- policy_: SchedulerPolicy
 -
-+ Scheduler(core_num: int)
++ Scheduler(num_of_cores: int, task_list: list&lt;Task&gt;*&amp;&amp;, policy: SchedulerPolicy)
 + ~Scheduler()
 
 - isListOrdered(list: list&lt;T&gt; &amp;): bool
-- getNextTask(policy: SchedulerPolicy, task_list: list&lt;Task&gt; &amp;): Task*
+- getNextTask(): Task*
 
 _+ getCounter(): int_
-+ simulateProcessing(task_list: list&lt;Task&gt;&amp;, policy: SchedulerPolicy): unordered_map&lt;int, list&lt;string\&gt;&gt;*</panel_attributes>
+_+ resetCounter(): int_
++ simulateProcessing(): SimulationResults*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>660</x>
-      <y>24</y>
-      <w>720</w>
-      <h>144</h>
+      <x>360</x>
+      <y>152</y>
+      <w>216</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>580.0;100.0;580.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+    <additional_attributes>520.0;100.0;520.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>828</x>
-      <y>228</y>
-      <w>156</w>
-      <h>36</h>
+      <x>416</x>
+      <y>220</y>
+      <w>52</w>
+      <h>12</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
@@ -132,21 +135,21 @@ _+ getCounter(): int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1224</x>
-      <y>396</y>
-      <w>36</w>
-      <h>108</h>
+      <x>524</x>
+      <y>292</y>
+      <w>12</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1488</x>
-      <y>480</y>
-      <w>168</w>
-      <h>108</h>
+      <x>608</x>
+      <y>336</y>
+      <w>56</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
 SchedulerPolicy
@@ -158,21 +161,21 @@ kGJF</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1560</x>
-      <y>396</y>
-      <w>36</w>
-      <h>108</h>
+      <x>632</x>
+      <y>292</y>
+      <w>12</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1068</x>
-      <y>480</y>
-      <w>336</w>
-      <h>240</h>
+      <x>472</x>
+      <y>336</y>
+      <w>112</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>Core
 -
@@ -192,12 +195,47 @@ kGJF</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>636</x>
-      <y>348</y>
-      <w>456</w>
-      <h>288</h>
+      <x>352</x>
+      <y>260</y>
+      <w>128</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;220.0;360.0;220.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;300.0;300.0;300.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>716</x>
+      <y>192</y>
+      <w>136</w>
+      <h>92</h>
+    </coordinates>
+    <panel_attributes>SimulationResults
+-
+- total_time: int
+- cores_results: unordered_map&lt;int, list&lt;string\&gt;&gt;*
+-
++ SimulationResults()
++ ~SimulationResults()
+
++ addCoreResult(core_id: int, result: string): void
++ getCoreResults(core_id: int): list&lt;string&gt;&amp;
++ setTotalTime(time: int): void
++ getTotalTime(): int
+
++ getReport(): list&lt;string&gt;*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>220</y>
+      <w>52</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

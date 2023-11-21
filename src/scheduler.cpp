@@ -3,22 +3,29 @@
 #include <stdexcept>
 #include <iostream>
 
+#include "simulation_results.h"
+
 namespace escalonador
 {
     int Scheduler::time_counter_ = 0;
 
-    Scheduler::Scheduler(int num_of_cores) : num_of_cores_(num_of_cores)
+    Scheduler::Scheduler(int num_of_cores, std::list<Task> *&&task_list, SchedulerPolicy policy) : num_of_cores_(num_of_cores)
     {
         // Creates and initializes array of cores
         cores_ = (Core *)malloc(sizeof(Core) * num_of_cores_);
         for (int i = 0; i < num_of_cores_; i++)
             cores_[i] = Core(i);
+
+        task_list_ = task_list;
+        task_list = nullptr;
+
+        policy_ = policy;
     }
 
     Scheduler::~Scheduler()
     {
-        // Free memory
         free(cores_);
+        delete task_list_;
     }
 
     int Scheduler::getCounter()
@@ -26,34 +33,39 @@ namespace escalonador
         return time_counter_;
     }
 
-    Task *Scheduler::getNextTask(SchedulerPolicy policy, std::list<Task> &task_list)
+    void Scheduler::resetCounter()
+    {
+        time_counter_ = 0;
+    }
+
+    Task *Scheduler::getNextTask()
     {
         Task *next_task;
 
-        if (task_list.empty())
+        if (task_list_->empty())
             return nullptr;
 
-        switch (policy)
+        switch (policy_)
         {
         // Shortest Job First
         case SchedulerPolicy::kSJF:
-            next_task = new Task(task_list.front());
-            task_list.pop_front();
+            next_task = new Task(task_list_->front());
+            task_list_->pop_front();
             break;
 
         // Greatest Job First
         case SchedulerPolicy::kGJF:
-            next_task = new Task(task_list.back());
-            task_list.pop_back();
+            next_task = new Task(task_list_->back());
+            task_list_->pop_back();
             break;
         }
 
         return next_task;
     }
 
-    std::unordered_map<int, std::list<std::string>> *Scheduler::simulateProcessing(std::list<Task> &task_list, Scheduler::SchedulerPolicy policy)
+    SimulationResults *Scheduler::simulateProcessing()
     {
-        auto is_list_ordered = Scheduler::isListOrdered<Task>(task_list);
+        auto is_list_ordered = Scheduler::isListOrdered<Task>(*task_list_);
 
         if (!is_list_ordered)
             throw std::runtime_error("Erro: A lista de tarefas esta vazia ou nao esta ordenada para a simulacao!");
@@ -61,18 +73,15 @@ namespace escalonador
         std::cout << "A lista de tarefas esta ordenada\n\n";
 
         int terminated_tasks = 0;
-        int const no_of_tasks = (int)task_list.size();
-        auto result_processing = new std::unordered_map<int, std::list<std::string>>();
+        int const no_of_tasks = (int)task_list_->size();
+        auto result_processing = new SimulationResults();
 
         std::cout << "Nro de tasks: " << no_of_tasks << std::endl;
         std::cout << "Nro de cores: " << num_of_cores_ << "\n\n";
 
-        // Inicializa os núcleos e as listas de resultado
+        // Inicializa os núcleos
         for (int i = 0; i < num_of_cores_; ++i)
-        {
-            cores_[i].setTask(getNextTask(policy, task_list));
-            result_processing->insert(std::make_pair(cores_[i].getId(), std::list<std::string>()));
-        }
+            cores_[i].setTask(getNextTask());
 
         // Executa a simulação até todas as tarefas estarem prontas
         while (terminated_tasks < no_of_tasks)
@@ -90,10 +99,10 @@ namespace escalonador
                     {
                         // Insere descrição da tarefa pronta na lista de resultados do core
                         std::string task_done_desc = cores_[i].getCurrentTaskInfo();
-                        result_processing->at(cores_[i].getId()).push_back(task_done_desc);
+                        result_processing->addCoreResult(cores_[i].getId(), task_done_desc);
 
                         // Coloca tarefa nova no core
-                        cores_[i].setTask(getNextTask(policy, task_list));
+                        cores_[i].setTask(getNextTask());
 
                         // Incrementa contador de tarefas prontas
                         ++terminated_tasks;
@@ -101,6 +110,9 @@ namespace escalonador
                 }
             }
         }
+
+        result_processing->setTotalTime(time_counter_);
+        resetCounter();
 
         return result_processing;
     }
