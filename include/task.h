@@ -14,6 +14,10 @@ namespace escalonador
 
     public:
         Task(std::string name, int duration);
+
+        // Copy constructor
+        Task(const Task& t);
+        
         bool operator<=(const Task& t) const;
 
         std::string getName();

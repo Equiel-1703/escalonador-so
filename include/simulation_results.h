@@ -3,6 +3,7 @@
 #include <string>
 #include <unordered_map>
 #include <list>
+#include <memory>
 
 namespace escalonador
 {
@@ -11,18 +12,17 @@ namespace escalonador
     {
     private:
         int total_time_;
-        std::unordered_map<int, std::list<std::string>> *cores_results;
+        std::unique_ptr<std::unordered_map<int, std::list<std::string>>> cores_results_;
 
     public:
         SimulationResults();
-        ~SimulationResults();
 
         void addCoreResult(int core_id, std::string result);
         std::list<std::string> &getCoreResults(int core_id);
         void setTotalTime(int time);
         int getTotalTime();
 
-        std::list<std::string> *getReport();
+        std::unique_ptr<std::list<std::string>> getReport();
     };
 
 } // namespace escalonador

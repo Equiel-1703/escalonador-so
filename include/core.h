@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
 #include "task.h"
 
@@ -9,17 +10,18 @@ namespace escalonador
     class Core
     {
     private:
-        int core_id_;
-        Task *current_task_;
+        const int core_id_;
+        std::unique_ptr<Task> current_task_;
         int task_in_;
+        static int cores_counter_;
 
     public:
-        Core(int core_id);
+        Core();
 
         int getId();
-        void setTask(Task *task);
+        void setTask(std::unique_ptr<Task> task);
         bool isOccupied();
-        Task *getTask();
+        Task &getTask();
         void process();
         std::string getCurrentTaskInfo();
     };

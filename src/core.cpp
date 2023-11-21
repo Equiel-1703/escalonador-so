@@ -6,11 +6,12 @@
 
 namespace escalonador
 {
-    Core::Core(int core_id)
+    int Core::cores_counter_ = 0;
+
+    Core::Core() : core_id_(cores_counter_)
     {
-        current_task_ = nullptr;
         task_in_ = -1;
-        core_id_ = core_id;
+        cores_counter_++;
     }
 
     int Core::getId()
@@ -18,12 +19,9 @@ namespace escalonador
         return core_id_;
     }
 
-    void Core::setTask(Task *task)
+    void Core::setTask(std::unique_ptr<Task> task)
     {
-        if (current_task_ != nullptr)
-            delete current_task_;
-
-        current_task_ = task;
+        current_task_ = std::move(task);
         task_in_ = Scheduler::getCounter();
     }
 
@@ -32,9 +30,9 @@ namespace escalonador
         return current_task_ != nullptr;
     }
 
-    Task * Core::getTask()
+    Task &Core::getTask()
     {
-        return current_task_;
+        return *current_task_;
     }
 
     void Core::process()

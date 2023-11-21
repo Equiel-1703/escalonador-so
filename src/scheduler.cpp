@@ -2,6 +2,7 @@
 
 #include <stdexcept>
 #include <iostream>
+#include <memory>
 
 #include "simulation_results.h"
 
@@ -9,23 +10,11 @@ namespace escalonador
 {
     int Scheduler::time_counter_ = 0;
 
-    Scheduler::Scheduler(int num_of_cores, std::list<Task> *&&task_list, SchedulerPolicy policy) : num_of_cores_(num_of_cores)
+    Scheduler::Scheduler(int num_of_cores, std::shared_ptr<std::list<Task>> task_list, SchedulerPolicy policy)
+    : num_of_cores_(validateNumOfCores(num_of_cores)), cores_(new Core[num_of_cores_])
     {
-        // Creates and initializes array of cores
-        cores_ = (Core *)malloc(sizeof(Core) * num_of_cores_);
-        for (int i = 0; i < num_of_cores_; i++)
-            cores_[i] = Core(i);
-
         task_list_ = task_list;
-        task_list = nullptr;
-
         policy_ = policy;
-    }
-
-    Scheduler::~Scheduler()
-    {
-        free(cores_);
-        delete task_list_;
     }
 
     int Scheduler::getCounter()
@@ -38,7 +27,15 @@ namespace escalonador
         time_counter_ = 0;
     }
 
-    Task *Scheduler::getNextTask()
+    int Scheduler::validateNumOfCores(int val)
+    {
+        if (val < 1)
+            throw std::invalid_argument("O numero de cores nao pode ser menor que 1!");
+
+        return val;
+    }
+
+    std::unique_ptr<Task> Scheduler::getNextTask()
     {
         Task *next_task;
 
@@ -60,10 +57,10 @@ namespace escalonador
             break;
         }
 
-        return next_task;
+        return std::unique_ptr<Task>(next_task);
     }
 
-    SimulationResults *Scheduler::simulateProcessing()
+    std::unique_ptr<SimulationResults> Scheduler::simulateProcessing()
     {
         auto is_list_ordered = Scheduler::isListOrdered<Task>(*task_list_);
 
@@ -95,7 +92,7 @@ namespace escalonador
                 {
                     cores_[i].process();
 
-                    if (cores_[i].getTask()->isDone())
+                    if (cores_[i].getTask().isDone())
                     {
                         // Insere descrição da tarefa pronta na lista de resultados do core
                         std::string task_done_desc = cores_[i].getCurrentTaskInfo();
@@ -114,6 +111,6 @@ namespace escalonador
         result_processing->setTotalTime(time_counter_);
         resetCounter();
 
-        return result_processing;
+        return std::unique_ptr<SimulationResults>(result_processing);
     }
 } // namespace escalonador

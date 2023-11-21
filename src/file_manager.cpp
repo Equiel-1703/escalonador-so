@@ -9,10 +9,10 @@
 namespace escalonador
 {
 
-    std::list<Task> *FileManager::readFile(std::string file_path)
+    std::shared_ptr<std::list<Task>> FileManager::readFile(std::string file_path)
     {
         // Cria ponteiro pra lista
-        std::list<escalonador::Task> *task_list;
+        std::shared_ptr<std::list<escalonador::Task>> task_list(new std::list<escalonador::Task>());
 
         file_in.open(file_path);
 
@@ -24,9 +24,6 @@ namespace escalonador
 
             std::string name_task;
             int task_duration;
-
-            // Aloca lista de fato
-            task_list = new std::list<escalonador::Task>;
 
             // Percorre arquivo linha a linha
             while (std::getline(file_in, line))

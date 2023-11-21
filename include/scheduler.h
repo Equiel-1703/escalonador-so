@@ -2,6 +2,7 @@
 
 #include <list>
 #include <unordered_map>
+#include <memory>
 
 #include "core.h"
 #include "task.h"
@@ -20,9 +21,9 @@ namespace escalonador
 
     private:
         const int num_of_cores_;
-        Core *cores_;
+        std::unique_ptr<Core[]> cores_;
         static int time_counter_;
-        std::list<Task> *task_list_;
+        std::shared_ptr<std::list<Task>> task_list_;
         SchedulerPolicy policy_;
 
         // Check if a given list is ordered
@@ -55,16 +56,16 @@ namespace escalonador
             return true;
         }
 
-        Task *getNextTask();
+        int validateNumOfCores(int val);
+        std::unique_ptr<Task> getNextTask();
 
     public:
-        Scheduler(int num_of_cores, std::list<Task> *&&task_list, SchedulerPolicy policy);
-        ~Scheduler();
+        Scheduler(int num_of_cores, std::shared_ptr<std::list<Task>> task_list, SchedulerPolicy policy);
 
         static int getCounter();
         static void resetCounter();
 
         // Note: this method only works properly if task_list is ordered!
-        SimulationResults *simulateProcessing();
+        std::unique_ptr<SimulationResults> simulateProcessing();
     };
 } // namespace escalonador

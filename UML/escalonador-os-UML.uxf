@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>4</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>348</x>
-      <y>144</y>
-      <w>32</w>
-      <h>12</h>
+      <x>364</x>
+      <y>42</y>
+      <w>56</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>main()</panel_attributes>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>140</x>
-      <y>192</y>
-      <w>136</w>
-      <h>60</h>
+      <x>0</x>
+      <y>126</y>
+      <w>238</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>FileManager
 -
@@ -31,10 +31,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>308</x>
-      <y>192</y>
-      <w>112</w>
-      <h>72</h>
+      <x>294</x>
+      <y>126</y>
+      <w>196</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>Task
 -
@@ -53,10 +53,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>204</x>
-      <y>152</y>
-      <w>168</w>
-      <h>48</h>
+      <x>112</x>
+      <y>56</y>
+      <w>294</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;40.0;400.0;40.0;400.0;10.0</additional_attributes>
@@ -64,10 +64,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>152</y>
-      <w>12</w>
-      <h>48</h>
+      <x>385</x>
+      <y>56</y>
+      <w>21</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
@@ -75,10 +75,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>272</x>
-      <y>220</y>
-      <w>44</w>
-      <h>12</h>
+      <x>231</x>
+      <y>175</y>
+      <w>77</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
@@ -86,10 +86,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>460</x>
-      <y>192</y>
-      <w>216</w>
-      <h>104</h>
+      <x>560</x>
+      <y>126</y>
+      <w>378</w>
+      <h>182</h>
     </coordinates>
     <panel_attributes>Scheduler
 -
@@ -113,10 +113,10 @@ _+ resetCounter(): int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>152</y>
-      <w>216</w>
-      <h>48</h>
+      <x>385</x>
+      <y>56</y>
+      <w>378</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>520.0;100.0;520.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
@@ -124,10 +124,10 @@ _+ resetCounter(): int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>416</x>
-      <y>220</y>
-      <w>52</w>
-      <h>12</h>
+      <x>483</x>
+      <y>175</y>
+      <w>91</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
@@ -135,10 +135,10 @@ _+ resetCounter(): int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>524</x>
-      <y>292</y>
-      <w>12</w>
-      <h>52</h>
+      <x>672</x>
+      <y>301</y>
+      <w>21</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
@@ -146,10 +146,10 @@ _+ resetCounter(): int_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>608</x>
-      <y>336</y>
-      <w>56</w>
-      <h>36</h>
+      <x>819</x>
+      <y>378</y>
+      <w>98</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
 SchedulerPolicy
@@ -161,10 +161,10 @@ kGJF</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>632</x>
-      <y>292</y>
-      <w>12</w>
-      <h>52</h>
+      <x>861</x>
+      <y>301</y>
+      <w>21</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
@@ -172,10 +172,10 @@ kGJF</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>472</x>
-      <y>336</y>
-      <w>112</w>
-      <h>80</h>
+      <x>581</x>
+      <y>378</y>
+      <w>196</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>Core
 -
@@ -195,10 +195,10 @@ kGJF</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>352</x>
-      <y>260</y>
-      <w>128</w>
-      <h>128</h>
+      <x>371</x>
+      <y>245</y>
+      <w>224</w>
+      <h>224</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;300.0;300.0;300.0</additional_attributes>
@@ -206,10 +206,10 @@ kGJF</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>716</x>
-      <y>192</y>
-      <w>136</w>
-      <h>92</h>
+      <x>1008</x>
+      <y>126</y>
+      <w>238</w>
+      <h>161</h>
     </coordinates>
     <panel_attributes>SimulationResults
 -
@@ -230,12 +230,23 @@ kGJF</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>672</x>
-      <y>220</y>
-      <w>52</w>
-      <h>12</h>
+      <x>931</x>
+      <y>175</y>
+      <w>91</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>110.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>385</x>
+      <y>56</y>
+      <w>763</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>1070.0;100.0;1070.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

@@ -12,6 +12,13 @@ namespace escalonador
         time_in_cpu_ = 0;
     }
 
+    Task::Task(const Task& t)
+    {
+        this->duration_ = t.duration_;
+        this->name_ = std::move(t.name_);
+        this->time_in_cpu_ = t.time_in_cpu_;
+    }
+
     bool Task::operator<=(const Task &t) const
     {
         return this->duration_ <= t.duration_;

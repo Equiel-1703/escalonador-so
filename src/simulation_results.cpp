@@ -3,28 +3,23 @@
 namespace escalonador
 {
     SimulationResults::SimulationResults()
+    : cores_results_(new std::unordered_map<int, std::list<std::string>>())
     {
         total_time_ = -1;
-        cores_results = new std::unordered_map<int, std::list<std::string>>();
-    }
-
-    SimulationResults::~SimulationResults()
-    {
-        delete cores_results;
     }
 
     void SimulationResults::addCoreResult(int core_id, std::string result)
     {
         // Se não existe a chave, ela é criada
-        if (cores_results->find(core_id) == cores_results->end())
-            cores_results->insert(std::make_pair(core_id, std::list<std::string>()));
+        if (cores_results_->find(core_id) == cores_results_->end())
+            cores_results_->insert(std::make_pair(core_id, std::list<std::string>()));
 
-        cores_results->at(core_id).push_back(result);
+        cores_results_->at(core_id).push_back(result);
     }
 
     std::list<std::string> &SimulationResults::getCoreResults(int core_id)
     {
-        return cores_results->at(core_id);
+        return cores_results_->at(core_id);
     }
 
     void SimulationResults::setTotalTime(int time)
@@ -37,12 +32,12 @@ namespace escalonador
         return total_time_;
     }
 
-    std::list<std::string> *SimulationResults::getReport()
+    std::unique_ptr<std::list<std::string>> SimulationResults::getReport()
     {
         auto report = new std::list<std::string>();
 
         // Como temos que percorrer cada lista de cada chave, esse laço é O(k * n)
-        for (auto it : *cores_results)
+        for (auto it : *cores_results_)
         {
             report->push_back("Tarefas realizadas pelo nucleo [" + std::to_string(it.first) + "]:\n");
             for (auto it_list : it.second)
@@ -54,7 +49,7 @@ namespace escalonador
 
         report->push_back("Tempo total de processamento: " + std::to_string(total_time_));
 
-        return report;
+        return std::unique_ptr<std::list<std::string>>(report);
     }
 
 } // namespace escalonador
